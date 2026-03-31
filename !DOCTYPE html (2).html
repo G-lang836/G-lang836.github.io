@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>胡艳彬(Alabin) - 个人简历</title>
+    <style>
+        /* ===== 全局基础样式 ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.5;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20px;
+            position: relative;
+            min-height: 100vh;
+        }
+        
+        /* ===== A4纸张尺寸设置 ===== */
+        @page {
+            size: A4;
+            margin: 0;
+        }
+        body {
+            width: 210mm; /* A4宽度 */
+            min-height: 297mm; /* A4高度 */
+            max-width: 210mm; /* 确保不超出A4宽度 */
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: visible;
+        }
+        
+        /* ===== 背景装饰元素 ===== */
+        .bg-decoration {
+            position: absolute;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .bg-decoration-1 {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(45deg, rgba(46, 64, 83, 0.05) 0%, rgba(86, 101, 115, 0.05) 100%);
+            border-radius: 50%;
+            top: -150px;
+            right: -150px;
+        }
+        .bg-decoration-2 {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, rgba(46, 64, 83, 0.03) 0%, rgba(86, 101, 115, 0.03) 100%);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            bottom: 50px;
+            left: -100px;
+        }
+        .content-decoration {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #2E4053, #566573);
+            border-radius: 10px;
+            transform: rotate(45deg);
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        /* ===== 主容器布局 ===== */
+        .resume-container {
+            position: relative;
+            z-index: 1;
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        
+        /* ===== 左侧栏样式 ===== */
+        .sidebar {
+            width: 30%;
+            background: linear-gradient(135deg, #2E4053 0%, #566573 100%);
+            color: #fff;
+            padding: 30px 25px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            min-height: 297mm; /* 确保与A4等高 */
+            border-right: 1px solid #ddd;
+            box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+            z-index: 2;
+        }
+        .sidebar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, #ffd166, #ef476f, #06d6a0);
+        }
+        
+        /* ===== 右侧内容区样式 ===== */
+        .main-content {
+            width: 70%;
+            padding: 30px 40px;
+            margin-left: 30%;
+            background-color: #fff;
+            min-height: 297mm; /* 确保与A4等高 */
+            z-index: 1;
+            position: relative;
+        }
+        
+        /* ===== 标题样式 ===== */
+        h1 {
+            color: #fff;
+            font-size: 28px;
+            margin-bottom: 5px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+        h2 {
+            color: #fff;
+            font-size: 20px;
+            margin: 30px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+        }
+        h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(to right, #ffd166, #ef476f);
+        }
+        .main-content h2 {
+            color: #2E4053;
+            border-bottom: 2px solid #eee;
+        }
+        .main-content h2::before {
+            background: linear-gradient(to right, #2E4053, #566573);
+        }
+        h3 {
+            color: #2E4053;
+            font-size: 18px;
+            margin: 20px 0 10px 0;
+        }
+
+        /* ===== 各部分通用样式 ===== */
+        .section {
+            margin-bottom: 30px;
+            position: relative;
+        }
+        .section p, .section li {
+            margin-bottom: 8px;
+        }
+
+        /* ===== 个人信息头部 ===== */
+        .profile-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 25px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        .profile-photo {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #fff;
+            margin: 0 auto 20px auto;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+        }
+        .job-title {
+            color: #ffd166;
+            font-size: 18px;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 20px;
+            border-radius: 25px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        /* ===== 联系信息 ===== */
+        .contact-info p {
+            padding: 12px 15px 12px 50px;
+            border-left: 4px solid #ffd166;
+            background-color: rgba(255, 255, 255, 0.1);
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+            position: relative;
+        }
+        .contact-info p::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+        .contact-info p:nth-child(1)::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffd166'%3E%3Cpath d='M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z'/%3E%3C/svg%3E");
+        }
+        .contact-info p:nth-child(2)::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffd166'%3E%3Cpath d='M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z'/%3E%3C/svg%3E");
+        }
+        .contact-info p:nth-child(3)::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffd166'%3E%3Cpath d='M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z'/%3E%3C/svg%3E");
+        }
+        .contact-info strong {
+            color: #ffd166;
+        }
+
+        /* ===== 技能列表 ===== */
+        .skills ul {
+            list-style-type: none;
+            padding-left: 5px;
+        }
+        .skills li {
+            padding: 8px 0 8px 25px;
+            position: relative;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .skills li:last-child {
+            border-bottom: none;
+        }
+        .skills li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #ffd166;
+            font-weight: bold;
+        }
+
+        /* ===== 座右铭样式 ===== */
+        .motto {
+            font-style: italic;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            text-align: center;
+            color: #ffd166;
+            border-left: 4px solid #ef476f;
+            margin-top: 20px;
+        }
+
+        /* ===== 工作与教育经历时间线 ===== */
+        .timeline-item {
+            padding: 20px;
+            border: 1px solid #e9ecef;
+            border-left: 5px solid #2E4053;
+            margin-bottom: 20px;
+            page-break-inside: avoid;
+            background: #fff;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 20px;
+            width: 16px;
+            height: 16px;
+            background: #2E4053;
+            border-radius: 50%;
+            border: 3px solid #fff;
+            z-index: 1;
+        }
+        .timeline-period {
+            color: #2E4053;
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: inline-block;
+            padding: 3px 10px;
+            background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+            font-size: 14px;
+        }
+        .timeline-title {
+            font-size: 18px;
+            color: #2E4053;
+            margin-bottom: 10px;
+            position: relative;
+            padding-bottom: 8px;
+        }
+        .timeline-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(to right, #2E4053, #566573);
+        }
+        .timeline-desc {
+            color: #666;
+            line-height: 1.6;
+        }
+        .timeline-desc p {
+            margin-bottom: 8px;
+        }
+
+        /* ===== 专业资格样式 ===== */
+        .qualifications p {
+            padding: 10px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            margin-bottom: 10px;
+            border-left: 3px solid #06d6a0;
+        }
+
+        /* ===== 教学特色样式 ===== */
+        .teaching-features p {
+            padding: 12px 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            border-left: 4px solid #2E4053;
+        }
+        .teaching-features strong {
+            color: #2E4053;
+        }
+
+        /* ===== 打印/PDF转换专用优化样式 ===== */
+        @media print {
+            body {
+                padding: 0 !important;
+                width: 210mm !important;
+                height: auto !important;
+                min-height: 297mm !important;
+                background: white !important;
+                box-shadow: none !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            
+            /* 隐藏装饰元素 */
+            .bg-decoration-1,
+            .bg-decoration-2,
+            .content-decoration {
+                display: none !important;
+            }
+            
+            /* 左侧栏打印优化 */
+            .sidebar {
+                position: absolute !important;
+                width: 30% !important;
+                height: 297mm !important;
+                page-break-inside: avoid !important;
+                background: #f8f9fa !important;
+                color: #333 !important;
+                box-shadow: none !important;
+                overflow: visible !important;
+            }
+            .sidebar::before {
+                display: none !important;
+            }
+            .sidebar h1,
+            .sidebar h2 {
+                color: #2E4053 !important;
+            }
+            .job-title {
+                color: #566573 !important;
+                background: #f0f0f0 !important;
+                border: 1px solid #ddd !important;
+            }
+            
+            /* 右侧内容区打印优化 */
+            .main-content {
+                margin-left: 30% !important;
+                width: 70% !important;
+                page-break-inside: avoid !important;
+                background: white !important;
+            }
+            
+            /* 联系信息打印优化 */
+            .contact-info p {
+                background: #f8f9fa !important;
+                color: #333 !important;
+                border-left: 3px solid #2E4053 !important;
+            }
+            .contact-info strong {
+                color: #2E4053 !important;
+            }
+            .contact-info p::before {
+                filter: brightness(0) saturate(100%) invert(25%) sepia(13%) saturate(1276%) hue-rotate(166deg) brightness(93%) contrast(88%);
+            }
+            
+            /* 技能列表打印优化 */
+            .skills li {
+                color: #333 !important;
+                border-bottom: 1px solid #ddd !important;
+            }
+            .skills li::before {
+                color: #2E4053 !important;
+            }
+            
+            /* 座右铭打印优化 */
+            .motto {
+                background: #f8f9fa !important;
+                color: #2E4053 !important;
+                border-left: 3px solid #2E4053 !important;
+            }
+            
+            /* 时间线项目打印优化 */
+            .timeline-item {
+                box-shadow: none !important;
+                border: 1px solid #ddd !important;
+                border-left: 4px solid #2E4053 !important;
+            }
+            .timeline-item::before {
+                background: #2E4053 !important;
+                border: 2px solid white !important;
+            }
+            
+            /* 避免分页问题 */
+            .section,
+            .timeline-item,
+            .profile-header {
+                page-break-inside: avoid !important;
+            }
+            h2 {
+                page-break-after: avoid !important;
+            }
+            
+            /* 确保图片正确打印 */
+            .profile-photo {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+        }
+
+        /* ===== 响应式调整 ===== */
+        @media screen and (max-width: 1200px) {
+            body {
+                width: 100%;
+                min-height: auto;
+                box-shadow: none;
+            }
+            .sidebar {
+                position: relative;
+                width: 100%;
+                min-height: auto;
+                margin-bottom: 20px;
+            }
+            .main-content {
+                width: 100%;
+                margin-left: 0;
+                min-height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 背景装饰元素 -->
+    <div class="bg-decoration bg-decoration-1"></div>
+    <div class="bg-decoration bg-decoration-2"></div>
+    <div class="content-decoration"></div>
+    
+    <div class="resume-container">
+        <!-- 左侧边栏 - 个人信息、技能、联系方式 -->
+        <div class="sidebar">
+            <div class="profile-header">
+                <img src="头像.jpg" class="profile-photo" alt="个人照片">
+                <h1>胡艳彬 (Alabin)</h1>
+                <p class="job-title">英语教师 (IELTS/TOEFL/SAT)</p>
+            </div>
+
+            <div class="section contact-info">
+                <h2>联系方式</h2>
+                <p><strong>邮箱：</strong>yuanshenNB@email.com</p>
+                <p><strong>电话：</strong>+86 138 11451499</p>
+                <p><strong>地址：</strong>中国 北京市</p>
+            </div>
+
+            <div class="section skills">
+                <h2>专业技能</h2>
+                <ul>
+                    <li>雅思/托福/SAT教学与备考策略</li>
+                    <li>认知语言学理论与实践应用</li>
+                    <li>英语语法、词汇深度解析</li>
+                    <li>专业笔译与教学材料编写</li>
+                    <li>学术英语与综合英语教学</li>
+                    <li>课程设计与教学逻辑构建</li>
+                </ul>
+            </div>
+
+            <div class="section qualifications">
+                <h2>专业资格</h2>
+                <p>高校外语教师研修证书</p>
+                <p>雅思成绩：8分</p>
+            </div>
+
+            <div class="motto">
+                <p><em>Try your best to do the best!</em></p>
+            </div>
+        </div> <!-- 左侧边栏结束 -->
+
+        <!-- 右侧主内容区 - 工作经历、教育背景等 -->
+        <div class="main-content">
+            <div class="section">
+                <h2>工作经历</h2>
+                <div class="timeline-item">
+                    <div class="timeline-period">2019年 至今</div>
+                    <div class="timeline-title">高级英语讲师 / 学术主管</div>
+                    <div class="timeline-desc">
+                        <p>负责雅思、托福、SAT等高阶英语课程体系的研发与主讲。主导教学团队培训，优化教学内容与方法，学生提分效果显著。期间学员雅思平均提分1.5，托福平均提分20+。</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-period">2015年 - 2019年</div>
+                    <div class="timeline-title">大学英语教师 / 培训师</div>
+                    <div class="timeline-desc">
+                        <p>于国内重点高校及知名语言培训机构任职，承担大学英语、学术英语及出国考试类课程教学。积累了丰富的面对不同水平、不同目标学生的教学经验。</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-period">2012年 - 2015年</div>
+                    <div class="timeline-title">英语教学与研究员</div>
+                    <div class="timeline-desc">
+                        <p>专注于英语教学法的研究与实践，并将认知语言学理论应用于语法和词汇教学，形成了独到的教学见解，显著提升了学生的学习效率和兴趣。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>教育背景</h2>
+                <div class="timeline-item">
+                    <div class="timeline-period">2009年 - 2012年</div>
+                    <div class="timeline-title">英语语言文学硕士 (翻译方向)</div>
+                    <div class="timeline-desc">
+                        <p>系统学习了翻译理论、比较文学及高级语言学课程，毕业论文获评优秀。在读期间考取雅思8分。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>出版物与研究成果</h2>
+                <div class="timeline-item">
+                    <div class="timeline-title">参与编写《新编研究生英语系列教材-学术综合英语》</div>
+                    <div class="timeline-desc">
+                        <p>负责其中核心章节的撰写与审校，将认知语言学理念融入教材设计，助力研究生学术英语能力提升。</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-title">认知语言学在英语教学中的应用研究</div>
+                    <div class="timeline-desc">
+                        <p>长期致力于将认知语言学的原型理论、隐喻理论等应用于英语语法和词汇教学，形成了行之有效的教学法，相关论文在业内交流中广受好评。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>获奖情况</h2>
+                <div class="timeline-item">
+                    <div class="timeline-title">英语类比赛一等奖</div>
+                    <div class="timeline-desc">
+                        <p>曾获英语类主持、演讲、朗诵、教学、歌曲、话剧等多种比赛的一等奖，展现了出色的语言综合应用能力与舞台表现力。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section teaching-features">
+                <h2>教学特色</h2>
+                <p><strong>逻辑严密：</strong>善于构建清晰的知识框架，将复杂语言点系统化、条理化。</p>
+                <p><strong>幽默风趣：</strong>课堂氛围活跃，善于用生动的例子和幽默的表达激发学生学习兴趣，化枯燥为生动。</p>
+                <p><strong>因材施教：</strong>能根据学生的不同背景和目标，灵活调整教学策略和重点。</p>
+            </div>
+        </div> <!-- 右侧主内容区结束 -->
+    </div>
+
+    <script>
+        // 打印前提示
+        window.onbeforeprint = function() {
+            console.log('正在生成PDF/打印版本，请确保浏览器打印设置中勾选"背景图形"选项');
+            console.log('推荐打印设置：纸张尺寸A4，边距默认，缩放100%');
+        };
+    </script>
+</body>
+</html>
